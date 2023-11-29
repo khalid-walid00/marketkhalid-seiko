@@ -17,12 +17,12 @@ export default function App() {
 <Routes>
   <Route path="/" element={<Main/>}/>
   <Route path="dashbord" element={<Dashbord/>}>
-    <Route path="login" element={<Login/>}/>
-    <Route path="register" element={<Register/>}/>
-    <Route path="users" element={<Users/>}/>
-    <Route path="addproduct" element={<AddProduct/>}/>
-    <Route path="store" element={<Store/>}/>
-    <Route path="photos" element={<Photos/>}/>
+    <Route path="/login" element={<Login/>}/>
+    <Route path="/register" element={<Register/>}/>
+    <Route path="/users" element={<Users/>}/>
+    <Route path="/addproduct" element={<AddProduct/>}/>
+    <Route path="/store" element={<Store/>}/>
+    <Route path="/photos" element={<Photos/>}/>
   </Route>
 </Routes>
 </BrowserRouter>
