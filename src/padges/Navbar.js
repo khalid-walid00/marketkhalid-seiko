@@ -3,7 +3,8 @@ import { faBars, faCartShopping, faDatabase, faKipSign } from "@fortawesome/free
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
 export default function Navbar(){
-
+    const id = window.location.pathname.slice(10)
+    console.log(id)
     return(
         <nav className="nav navbar-expand-lg bg-dark  position-sticky  top-0">
         <Link href="#nav" data-bs-toggle="collapse" className="navbar-toggler">
@@ -15,7 +16,8 @@ export default function Navbar(){
                <Link to="/" className='mx-3 nav-link pointer'>Products</Link>
                <Link to="/on Sale " className='mx-3 nav-link pointer'>on Sale</Link>
                <Link to="/Conact US " className='mx-3 nav-link pointer'>Conact US</Link>
-               <a href="/login" className='mx-3 nav-link pointer'><FontAwesomeIcon className='mx-2 fa-beat fs-5' icon={faCircleUser} style={{"--fa-primary-color": "#ffffff", "--fa-secondary-color": "#000000", "--fa-secondary-opacity": "1",}} />Login</a>
+                { id==""   && <Link to="dashbord/login" className='mx-3 nav-link pointer'><FontAwesomeIcon className='mx-2 fa-beat fs-5' icon={faCircleUser} style={{"--fa-primary-color": "#ffffff", "--fa-secondary-color": "#000000", "--fa-secondary-opacity": "1",}} />Login</Link>
+}
             <Link to="/Login" className='mx-3 nav-link pointer'><FontAwesomeIcon icon={faCartShopping} className="fs-2"/></Link>
             <Link to="/dashbord" className='mx-3 nav-link pointer'><FontAwesomeIcon icon={faDatabase} /></Link>
             
