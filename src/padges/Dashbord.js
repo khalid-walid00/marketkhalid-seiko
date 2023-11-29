@@ -1,4 +1,4 @@
-import {  NavLink, Outlet } from "react-router-dom";
+import {  Outlet } from "react-router-dom";
 import Navbar from "./Navbar";
 import { faCameraRetro, faCartArrowDown, faFeather, faRightToBracket, faWarehouse } from "@fortawesome/free-solid-svg-icons";
 import { faRegistered, faUser } from "@fortawesome/free-regular-svg-icons";
@@ -17,12 +17,12 @@ export default function Dashbord(){
         <div className="w-100 bg-dark" style={{height:"1000vh"}}>
          <div className="pe-4 pt-4 pb-4 my-4 dashbord rounded-5">
             <div className="row">
-                    <NavLink to="login" className="border-5  mt-2 btndash btn border-start-0 border-white border text-white px-5 rounded-end-4"><FontAwesomeIcon className="mx-2 active fs-3" icon={faRightToBracket} />Login</NavLink>
-                    <NavLink to="register" className="border-5  mt-4 btndash btn border-start-0 border-white border text-white px-5 rounded-end-4"><FontAwesomeIcon className="mx-2 active fs-3" icon={faRegistered} />Register</NavLink>
-                    <NavLink to="users" className="border-5 mt-4 btndash btn border-start-0 border-white border text-white px-5 rounded-end-4"><FontAwesomeIcon className="mx-2 active fs-3" icon={faUser} />Users</NavLink>
-                    <NavLink to="store" className="border-5 mt-4 btndash btn border-start-0 border-white border text-white px-5 rounded-end-4"><FontAwesomeIcon className="mx-2 active fs-3" icon={faWarehouse} style={{color: "#ffffff",}} />The store</NavLink>
-                    <NavLink to="addproduct" className="border-5 mt-4 btndash btn border-start-0 border-white border text-white px-5 rounded-end-4"><FontAwesomeIcon className="mx-2 active fs-3" icon={faCartArrowDown} />Add product </NavLink>
-                    <NavLink to="photos" className="border-5 mt-4 btndash btn border-start-0 border-white border text-white px-5 rounded-end-4"><FontAwesomeIcon className="mx-2 active fs-3" icon={faCameraRetro} />upload photos</NavLink>
+                    <a href="https://marketkhalidseiko.netlify.app/dashbord/login" className="border-5  mt-2 btndash btn border-start-0 border-white border text-white px-5 rounded-end-4"><FontAwesomeIcon className="mx-2 active fs-3" icon={faRightToBracket} />Login</a>
+                    <a href="https://marketkhalidseiko.netlify.app/dashbord/register" className="border-5  mt-4 btndash btn border-start-0 border-white border text-white px-5 rounded-end-4"><FontAwesomeIcon className="mx-2 active fs-3" icon={faRegistered} />Register</a>
+                    <a href="https://marketkhalidseiko.netlify.app/dashbord/users" className="border-5 mt-4 btndash btn border-start-0 border-white border text-white px-5 rounded-end-4"><FontAwesomeIcon className="mx-2 active fs-3" icon={faUser} />Users</a>
+                    <a href="https://marketkhalidseiko.netlify.app/dashbord/store" className="border-5 mt-4 btndash btn border-start-0 border-white border text-white px-5 rounded-end-4"><FontAwesomeIcon className="mx-2 active fs-3" icon={faWarehouse} style={{color: "#ffffff",}} />The store</a>
+                    <a href="https://marketkhalidseiko.netlify.app/dashbord/addproduct" className="border-5 mt-4 btndash btn border-start-0 border-white border text-white px-5 rounded-end-4"><FontAwesomeIcon className="mx-2 active fs-3" icon={faCartArrowDown} />Add product </a>
+                    <a href="https://marketkhalidseiko.netlify.app/dashbord/photos" className="border-5 mt-4 btndash btn border-start-0 border-white border text-white px-5 rounded-end-4"><FontAwesomeIcon className="mx-2 active fs-3" icon={faCameraRetro} />upload photos</a>
           
             </div>
          </div>
