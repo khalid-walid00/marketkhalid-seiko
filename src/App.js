@@ -15,8 +15,8 @@ export default function App() {
 
 <BrowserRouter>
 <Routes>
-  <Route path="https://marketkhalidseiko.netlify.app" element={<Main/>}/>
-  <Route path="https://marketkhalidseiko.netlify.app/dashbord" element={<Dashbord/>}>
+  <Route path="/" element={<Main/>}/>
+  <Route path="/dashbord" element={<Dashbord/>}>
     <Route path="login" element={<Login/>}/>
     <Route path="register" element={<Register/>}/>
     <Route path="users" element={<Users/>}/>
