@@ -3,7 +3,6 @@ import Particles from "react-tsparticles"
 import { loadFull } from "tsparticles"
 export default function Particlsback() {
     const particlesInit = useCallback(async engine => {
-        console.log(engine);
         await loadFull(engine);
     }, []);
 

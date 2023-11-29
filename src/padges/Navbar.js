@@ -15,7 +15,7 @@ export default function Navbar(){
                <Link to="/" className='mx-3 nav-link pointer'>Products</Link>
                <Link to="/on Sale " className='mx-3 nav-link pointer'>on Sale</Link>
                <Link to="/Conact US " className='mx-3 nav-link pointer'>Conact US</Link>
-               <Link to="/Login" className='mx-3 nav-link pointer'><FontAwesomeIcon className='mx-2 fa-beat fs-5' icon={faCircleUser} style={{"--fa-primary-color": "#ffffff", "--fa-secondary-color": "#000000", "--fa-secondary-opacity": "1",}} />Login</Link>
+               <a href="/dashbord/login" className='mx-3 nav-link pointer'><FontAwesomeIcon className='mx-2 fa-beat fs-5' icon={faCircleUser} style={{"--fa-primary-color": "#ffffff", "--fa-secondary-color": "#000000", "--fa-secondary-opacity": "1",}} />Login</a>
             <Link to="/Login" className='mx-3 nav-link pointer'><FontAwesomeIcon icon={faCartShopping} className="fs-2"/></Link>
             <Link to="/dashbord" className='mx-3 nav-link pointer'><FontAwesomeIcon icon={faDatabase} /></Link>
             

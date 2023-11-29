@@ -328,4 +328,39 @@ nav {
   color: rgb(39, 23, 73) !important;
   font-size: x-large;
   border-color: rgb(136, 88, 237) !important;
+}
+
+td, tr {
+  color: white !important;
+  background: transparent !important;
+  border: 2px solid rgb(196, 43, 204);
+}
+
+tr {
+  border: 2px solid rgb(255, 255, 255) !important;
+}
+
+thead tr td {
+  border: 2px solid rgb(196, 43, 204);
+  font-weight: bolder;
+  font-style: italic;
+  font-size: x-large;
+}
+
+.table {
+  background: transparent !important;
+  border: 2px solid rgb(255, 255, 255);
+}
+
+tbody tr td {
+  border: 2px solid rgb(224, 147, 228);
+}
+
+.select {
+  background-color: #cd9ce1 !important;
+  color: white !important;
+}
+
+option:hover {
+  background-color: rgba(255, 255, 255, 0.5725490196) !important;
 }/*# sourceMappingURL=index.css.map */

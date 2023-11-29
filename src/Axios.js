@@ -7,6 +7,8 @@ const token =cookie.get("e-commerce")
 export const Axios =axios.create({
     baseURL:mainapi,
     headers:{
-        Authorization:"Bearer " + token
+        "Content-Type": "application/json",
+        "Authorization":"Accept "
     }
+    
 })
