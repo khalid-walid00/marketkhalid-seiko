@@ -44,7 +44,7 @@ export default function Dashbord(){
            </div>
          </div></div>}
      <div className="col">
-        <div><Outlet/> <Particlsback/></div>
+        <div><Outlet/><Particlsback/></div>
         
         
         </div>
