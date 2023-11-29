@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
 export default function Navbar(){
     const id = window.location.pathname.slice(10)
-    console.log(id)
+
     return(
         <nav className="nav navbar-expand-lg bg-dark  position-sticky  top-0">
         <Link href="#nav" data-bs-toggle="collapse" className="navbar-toggler">
