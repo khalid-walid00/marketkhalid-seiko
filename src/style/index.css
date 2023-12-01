@@ -10,6 +10,10 @@
   background-image: linear-gradient(0deg, transparent, rgba(67, 7, 97, 0.686));
 }
 
+.bg-black {
+  background-color: black !important;
+}
+
 .border-seg {
   border: 2px groove rgb(136, 88, 237);
 }
@@ -275,7 +279,6 @@ nav {
     height: 600px;
   }
   .footer {
-    height: 1000px;
     background-color: black;
   }
   .upfooter {
@@ -344,7 +347,7 @@ thead tr td {
   border: 2px solid rgb(196, 43, 204);
   font-weight: bolder;
   font-style: italic;
-  font-size: x-large;
+  font-size: large;
 }
 
 .table {
@@ -363,4 +366,55 @@ tbody tr td {
 
 option:hover {
   background-color: rgba(255, 255, 255, 0.5725490196) !important;
+}
+
+.btn-rounded-top-left {
+  border: 3px groove rgb(136, 88, 237) !important;
+  border-radius: 0px !important;
+  border-top-left-radius: 10px !important;
+  outline: 0;
+}
+
+.btn-rounded-top-right {
+  border: 3px groove rgb(136, 88, 237) !important;
+  border-radius: 0px !important;
+  border-left: 0 !important;
+  border-top-right-radius: 10px !important;
+  outline: 0;
+}
+
+.btn-rounded:hover {
+  border: 3px groove rgb(152, 152, 152) !important;
+  background-color: rgb(136, 88, 237) !important;
+  outline: 0;
+}
+
+.btn-rounded:not(:focus) {
+  border: 3px groove rgb(185, 182, 182) !important;
+  background-color: rgb(136, 88, 237) !important;
+  color: white;
+  outline: 0;
+}
+
+.texteara-rounded:hover {
+  border: 3px groove rgb(152, 152, 152) !important;
+  border-bottom: 0 !important;
+  background-color: rgb(136, 88, 237) !important;
+  outline: 0;
+  border-end-start-radius: 0px !important;
+  border-end-end-radius: 0px !important;
+}
+
+.texteara-rounded:not(:focus) {
+  border: 3px groove rgb(185, 182, 182) !important;
+  border-bottom: 0 !important;
+  border-end-start-radius: 0px !important;
+  border-end-end-radius: 0px !important;
+  background-color: rgb(136, 88, 237) !important;
+  color: white;
+  outline: 0;
+}
+
+.offcanvas {
+  z-index: 1000000000000000000000000 !important;
 }/*# sourceMappingURL=index.css.map */

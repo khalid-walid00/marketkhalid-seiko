@@ -7,6 +7,7 @@ import Users from "./padges/Users";
 import AddProduct from "./padges/AddProduct";
 import Store from "./padges/Store";
 import Photos from "./padges/Photos";
+import Conact from "./padges/Conact";
 export default function App() {
   return ( <>
   
@@ -16,6 +17,7 @@ export default function App() {
 <BrowserRouter>
 <Routes>
   <Route path="/" element={<Main/>}/>
+  <Route path="/conactus" element={<Conact/>}/>
   <Route path="/dashbord" element={<Dashbord/>}>
     <Route path="login" element={<Login/>}/>
     <Route path="register" element={<Register/>}/>

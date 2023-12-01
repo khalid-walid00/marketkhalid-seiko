@@ -4,8 +4,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
 export default function Navbar(){
     const id = window.location.pathname.slice(10)
-
-    return(
+   console.log(id)
+    return( <>
         <nav className="nav navbar-expand-lg bg-dark  position-sticky  top-0">
         <Link href="#nav" data-bs-toggle="collapse" className="navbar-toggler">
         <FontAwesomeIcon icon={faBars} style={{color: "#ffffff",}} />
@@ -15,14 +15,23 @@ export default function Navbar(){
             <ul className='navbar-nav fs-5'>
                <Link to="/" className='mx-3 nav-link pointer'>Products</Link>
                <Link to="/on Sale " className='mx-3 nav-link pointer'>on Sale</Link>
-               <Link to="/Conact US " className='mx-3 nav-link pointer'>Conact US</Link>
-                { id==""   && <Link to="dashbord/login" className='mx-3 nav-link pointer'><FontAwesomeIcon className='mx-2 fa-beat fs-5' icon={faCircleUser} style={{"--fa-primary-color": "#ffffff", "--fa-secondary-color": "#000000", "--fa-secondary-opacity": "1",}} />Login</Link>
+               <Link to="/conactus" className='mx-3 nav-link pointer'>Conact US</Link>
+                { id==""   && <Link to="/dashbord/login" className='mx-3 nav-link pointer'><FontAwesomeIcon className='mx-2 fa-beat fs-5' icon={faCircleUser} style={{"--fa-primary-color": "#ffffff", "--fa-secondary-color": "#000000", "--fa-secondary-opacity": "1",}} />Login</Link>
 }
-            <Link to="/Login" className='mx-3 nav-link pointer'><FontAwesomeIcon icon={faCartShopping} className="fs-2"/></Link>
+            <button to="/Login"data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"  className='btn mx-3 nav-link pointer'><FontAwesomeIcon icon={faCartShopping} className="fs-2"/></button>
             <Link to="/dashbord" className='mx-3 nav-link pointer'><FontAwesomeIcon icon={faDatabase} /></Link>
             
             </ul>
         </div>
      </nav>
-    )
+<div class="offcanvas offcanvas-end"  id="offcanvasRight">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="offcanvasRightLabel">card</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+  </div>
+  <div class="offcanvas-body">
+    ...
+  </div>
+</div>
+   </>)
 }

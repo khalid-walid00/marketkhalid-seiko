@@ -1,5 +1,6 @@
 import { useState } from "react"
 import axios from "axios";
+import { Axios } from "../Axios";
 export default function Login2(){
     
   let [username,setusername] =useState("")
@@ -10,8 +11,14 @@ export default function Login2(){
       let data=new FormData()
       data.append("username","seiko")
       data.append("password","123456")
-       let x=await axios.post(`http://127.0.0.1:8000/api-auth/login`,data)
-  console.log(x)
+      try{
+          var x=await axios.post(`http://127.0.0.1:8000/api/token/`,data)
+          console.log(x)
+      }catch(error){
+          console.log(x)
+      }
+     
+
 }
     return(<>
     <div className="row position-fixed bg-purple border-light border border-1 rounded-4 text-white" style={{width:"75%",height:"max-content"}}>

@@ -64,7 +64,7 @@ Join the Community
         </div>
       </div>
     </div>
-    <div className='row my-4 justify-content-center'>
+    <div className='row my-4 justify-content-center bg-black'>
 © 2035 by ARCADE. Powered and secured by khalid</div>
    </div>)
 }

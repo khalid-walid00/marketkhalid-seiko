@@ -29,7 +29,7 @@ export default function Dashbord(){
             </div>
          </div>
          <div className="row w-100 h-100 m-4 mt-0 pt-4">
-             {click!="register"&&click!="login" &&click!=""&&<div className="col-lg-3">
+             {click!="register"&&click!="login" &&click!=""&&click!="store" &&<div className="col-lg-3">
        <div className="card shadow-lg position-fixed infoadmin  h-75" style={{width:"350px"}}>
             <div className="trangle"></div>
            <div className="row justify-content-center p-5">
