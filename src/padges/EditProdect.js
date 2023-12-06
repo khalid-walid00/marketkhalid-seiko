@@ -1,26 +1,46 @@
 
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import imgupload from "../imgs/image.png"
 import { faCartArrowDown } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Axios } from "../Axios";
 import { color } from "framer-motion";
 import axios from "axios";
+import { useNavigate, useParams } from "react-router-dom";
 export default function AddProduct(){
     const [img,setimg]=useState(false)
     const [imgshow,setimgshow]=useState()
-    const [name,setname] =useState("")
+    const [name,setname] =useState()
     const [description,setdescription] =useState("")
     const [price,setprice] =useState("")
     const [discount,setdiscount] =useState("")
     const [status,setstatus] =useState(false)
     const [count,setcount] =useState("") 
     const [sale,setsale] =useState(false) 
+  const [daata,setdaata]=useState("")
+  const nav=useNavigate()
+  
 const x = useRef(null)
+let {id} =useParams()
+console.log()
+const [imguser,setimguser]=useState("")
+   const [username,setusername]=useState("")
+   const [first,setfirst]=useState("")
+   const [second,setsecond]=useState("")
+   const [email,setemail]=useState("")
+   useEffect(()=>{
+      try{
+        Axios.get("http://127.0.0.1:8000/api/profile/").then((res)=>(setimguser(res.data.image),setusername(res.data.user.username),
+        setfirst(res.data.user.first_name),setsecond(res.data.user.last_name),setemail(res.data.user.email)))
+      }catch(err){
+      console.log(err)
+      }
+    },[1])
+
 function uploadimng(){
   x.current.click()
 }
-const cc =  <img className="rounded-4" src={imgshow ? URL.createObjectURL(imgshow) : imgupload} width={"200px"} height={"190px"}/>
+const cc = <img className="rounded-4" src={imgshow ? URL.createObjectURL(imgshow) : daata.image} width={"200px"} height={"190px"}/>
 
 async function Form(e){  
   e.preventDefault()
@@ -33,28 +53,51 @@ async function Form(e){
   data.append("status",status)
   data.append("count",count)
   data.append("is_sale",sale)
- 
-
- 
   try {
-    var x= await Axios.post("http://127.0.0.1:8000/api/products/create",data,{
+    var x= await Axios.put(`http://127.0.0.1:8000/api/products/${id}`,data,{
      headers:{
       "Content-Type": "multipart/form-data",
      }
-})
-
-console.log(x);
- }catch (error) {  console.log(error)}
-
- 
-
 }
+)
+nav("/store")
+ }catch (error) {  console.log(error)}
+}
+
+useEffect(() => {  
+  try{
+Axios.get(`http://127.0.0.1:8000/api/products/${id}`).then((res)=>(setdaata(res.data),setname(res.data.title),setcount(res.data.count),
+setprice(res.data.price),setdiscount(res.data.discount),setdescription(res.data.description),setstatus(res.data.status),setsale(res.data.is_sale))) 
+  }catch(error){
+   console.log(error)
+  }
+   }, [0])
+
 function toggle(){
   setsale((v)=>((!v)))
 }
+
+
     return(<>
-   
-      <div className="row position-fixed bg-purple p-2 border-light border border-1 rounded-4 text-white" style={{width:"800px",height:"max-content"}}>
+      <div className="row">
+      <div className="col-lg-3">
+       <div className="card shadow-lg position-fixed  infoadmin" style={{width:"350px"}}>
+            <div className="trangle"></div>
+           <div className="row justify-content-center p-5">
+            <div className="rounded-circle  border-2  border-seg p-4" style={{width:"max-content"}}>
+           <img className="rounded-circle" style={{width:"80px"}} src={imguser}/>
+           </div>
+           </div>
+           <div className="row justify-content-center text-white fs-2 p-2">
+            <div >welcome mr: <span className="fs-4 text-color">{username}</span> </div>
+            <div>first_name: <span className="fs-4 text-color">{first}</span> </div>
+            <div>second_name: <span className="fs-4 text-color">{second}</span> </div>
+            <div>email: <span className="fs-4 text-color">{email}</span> </div>
+            <div className="fs-5 mt-5">are you ready to edit</div>
+           </div>
+         </div></div>
+      <div className="row bg-purple p-2 border-light border border-1 rounded-4 text-white" style={{width:"800px",height:"max-content"}}>
+     
       <form onSubmit={Form}><div className="text-white fs-1 text-center my-3 fst-italic fw-bold"><FontAwesomeIcon className="mx-2 active fs-3" icon={faCartArrowDown} />Add product</div>
       <div className="row">
       <div className="col text-center">
@@ -107,5 +150,5 @@ function toggle(){
       </form>
   
  </div>
-   </>) 
+   </div></>) 
 }

@@ -7,8 +7,11 @@ import Users from "./padges/Users";
 import AddProduct from "./padges/AddProduct";
 import Store from "./padges/Store";
 import Photos from "./padges/Photos";
+import EditProdect from "./padges/EditProdect";
 import Conact from "./padges/Conact";
+
 export default function App() {
+
   return ( <>
   
 
@@ -25,6 +28,7 @@ export default function App() {
     <Route path="addproduct" element={<AddProduct/>}/>
     <Route path="store" element={<Store/>}/>
     <Route path="photos" element={<Photos/>}/>
+    <Route path="store/edit/:id" element={<EditProdect/>}/>
   </Route>
 </Routes>
 </BrowserRouter>

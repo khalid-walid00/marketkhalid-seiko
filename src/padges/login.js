@@ -1,23 +1,35 @@
 import { useState } from "react"
 import axios from "axios";
 import { Axios } from "../Axios";
+import Cookie from "cookie-universal"
+import { useNavigate } from "react-router-dom";
 export default function Login2(){
     
   let [username,setusername] =useState("")
   let [password,setpassword] =useState("")
-   
+   const cookie =Cookie()
+   const nav=useNavigate()
   async function Form(e){
     e.preventDefault()
       let data=new FormData()
-      data.append("username","seiko")
-      data.append("password","123456")
-      try{
-          var x=await axios.post(`http://127.0.0.1:8000/api/token/`,data)
-          console.log(x)
-      }catch(error){
-          console.log(x)
-      }
-     
+      data.append("username",username)
+      data.append("password",password)
+     try{
+     let x=await axios.post("http://127.0.0.1:8000/api/token/",data);
+     let token=x.data.access
+     let refresh=x.data.refresh
+     console.log(token)
+    cookie.set("play",token)
+    cookie.set("refresh",refresh)
+    nav("/")
+     }
+     catch(err){
+    
+     }
+
+
+  
+   
 
 }
     return(<>

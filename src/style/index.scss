@@ -10,7 +10,30 @@ color: $seg !important;
 }
 .bg-black{
     background-color: black!important;
+   
 
+}
+
+.hover:hover{
+    color:$seg !important;
+    cursor: pointer;
+    transition: 0.4s;
+}
+.text-color{
+    background-image: linear-gradient(rgb(255, 255, 255),rgb(174, 77, 174));
+    -webkit-background-clip: text;
+    color: transparent;
+}
+::-webkit-scrollbar{
+    width: 10px;
+}
+::-webkit-scrollbar-track{
+    background-color: transparent;
+}
+::-webkit-scrollbar-thumb{
+   background-image: linear-gradient($seg,rgb(174, 77, 174));
+    width: 20px;
+    border-radius: 20px;
 }
 .border-seg{
     border: 2px groove rgb(136,88,237);
@@ -42,6 +65,7 @@ nav a:hover{
     color: $seg !important;
     transition: 0.5s;
 }
+
 .pointer{
     cursor: pointer;
 }

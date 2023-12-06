@@ -1,5 +1,8 @@
 import { faUser } from "@fortawesome/free-regular-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import axios from "axios";
+import { useEffect } from "react";
+import { Axios } from "../Axios";
 
 export default function Users(){
 

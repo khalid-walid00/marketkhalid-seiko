@@ -1,10 +1,9 @@
 import { faCircleUser } from "@fortawesome/free-regular-svg-icons";
-import { faBars, faCartShopping, faDatabase, faKipSign } from "@fortawesome/free-solid-svg-icons";
+import { faArrowRight, faBars, faCartShopping, faDatabase, faKipSign, faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
 export default function Navbar(){
     const id = window.location.pathname.slice(10)
-   console.log(id)
     return( <>
         <nav className="nav navbar-expand-lg bg-dark  position-sticky  top-0">
         <Link href="#nav" data-bs-toggle="collapse" className="navbar-toggler">
@@ -25,12 +24,31 @@ export default function Navbar(){
         </div>
      </nav>
 <div class="offcanvas offcanvas-end"  id="offcanvasRight">
-  <div class="offcanvas-header">
-    <h5 class="offcanvas-title" id="offcanvasRightLabel">card</h5>
-    <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+  <div class="offcanvas-header fs-1 ">
+    <h5 class="offcanvas-title fs-1" id="offcanvasRightLabel">card</h5>
+    <FontAwesomeIcon icon={faXmark} className="pointer" data-bs-dismiss="offcanvas"  />
   </div>
-  <div class="offcanvas-body">
-    ...
+  <div class="offcanvas-body bg-black text-white overflow-y-scroll">
+    <div className="row h-75">
+      <div className="col-lg-3">
+        <img src={require("../imgs/image (1).png")}/>
+      </div>
+      <div className="col">
+        <div className=""><span>name:</span></div>
+        <div className=""><span>price:</span></div>
+        <div className=""><input type="range"/></div>
+      </div>
+    </div>
+    <div className="row">
+      <div>
+        <div className="fs-1 fw-bolder">total</div>
+        <div className="fs-3">{}100$</div>
+      </div>
+    </div>
+  </div>
+  <div class="offcanvas-header fs-1 ">
+    <h5 class="offcanvas-title fs-1" id="offcanvasRightLabel">go to card</h5>
+    <FontAwesomeIcon icon={faArrowRight} className="pointer" data-bs-dismiss="offcanvas"  />
   </div>
 </div>
    </>)

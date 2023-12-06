@@ -10,11 +10,16 @@ import { animate, motion, scroll, useMotionValueEvent, useScroll } from "framer-
 import $ from 'jquery'
 import { useEffect, useState } from 'react';
 import Footer from './Footer';
+import { Axios } from '../Axios';
 
 
   export default function Main() {
     const [width,setwidth]=useState(100)
     const [show,setshow]=useState(false)
+  const [dataa1,setdataa1]=useState("")
+  const [dataa2,setdataa2]=useState("")
+  const [dataa3,setdataa3]=useState("")
+
    const {scrollY} =useScroll()
    useMotionValueEvent(scrollY,"change",(x)=>(setwidth(x/2)))
    $(window).on("scroll",()=>{
@@ -26,6 +31,90 @@ import Footer from './Footer';
 
     }
    })
+
+   useEffect(() => {  
+    try{
+
+  Axios.get(`http://127.0.0.1:8000/api/products/`)
+  .then((res)=>(setdataa1(res.data.results.filter((item) => { 
+    return item.status =="games"
+    }).map((item,key) => { 
+      return (
+        <div key={key} className='item'>
+        <div className='card bg-transparent text-center text-white' >
+          {item.is_sale &&<div className='position-absolute top-25 bg-danger z-3 rounded-end-4'>sale</div>}
+         <div className='overflow-hidden' style={{height:"300px"}}>
+          <img src={item.image} className='card-img zoom w-100 h-100'/>
+          </div>
+          <div className='card-body'>
+            <div className='card-title fs-4 fw-bold'>
+            {item.name}
+            </div>
+          {item.is_sale? <div className='card-text fs-5'>$ <span className='bg-danger text-decoration-line-through'>{item.price}</span> {(item.price - item.discount)}</div>:
+          <div className='card-text fs-5'>$ {item.price}</div>
+          }
+          
+
+            <a className='text-decoration-none btn text-white px-5 fs-4 fw-bold rounded-5 bg-seg'>add to card</a> 
+             <div className='card-text fs-6'>remaining number: {item.count}</div>
+          </div>
+        </div>
+        </div> 
+    )
+    })),setdataa2(res.data.results.filter((item) => { 
+      return item.status =="consoles"
+      }).map((item,key) => { 
+        return (
+          <div key={key} className='item'>
+          <div className='card bg-transparent text-center text-white' >
+            {item.is_sale &&<div className='position-absolute top-25 bg-danger z-3 rounded-end-4'>sale</div>}
+           <div className='overflow-hidden' style={{height:"300px"}}>
+            <img src={item.image} className='card-img zoom w-100 h-100'/>
+            </div>
+            <div className='card-body'>
+              <div className='card-title fs-4 fw-bold'>
+              {item.name}
+              </div>
+            {item.is_sale? <div className='card-text fs-5'>$ <span className='bg-danger text-decoration-line-through'>{item.price}</span> {(item.price - item.discount)}</div>:
+            <div className='card-text fs-5'>$ {item.price}</div>
+            }
+              <div className='card-text fs-6'>remaining number: {item.count}</div>
+
+              <a className='text-decoration-none btn text-white px-5 fs-4 fw-bold rounded-5 bg-seg'>add to card</a>
+            </div>
+          </div>
+          </div> 
+      )})),setdataa3(res.data.results.filter((item) => { 
+        return item.status =="controllers"
+        }).map((item,key) => { 
+          return (
+            <div key={key} className='item'>
+            <div className='card bg-transparent text-center text-white' >
+              {item.is_sale &&<div className='position-absolute top-25 bg-danger z-3 rounded-end-4'>sale</div>}
+             <div className='overflow-hidden' style={{height:"300px"}}>
+              <img src={item.image} className='card-img zoom w-100 h-100'/>
+              </div>
+              <div className='card-body'>
+                <div className='card-title fs-4 fw-bold'>
+                {item.name}
+                </div>
+              {item.is_sale? <div className='card-text fs-5'>$ <span className='bg-danger text-decoration-line-through'>{item.price}</span> {(item.price - item.discount)}</div>:
+              <div className='card-text fs-5'>$ {item.price}</div>
+              }
+                <div className='card-text fs-6'>remaining number: {item.count}</div>
+
+                <a className='text-decoration-none btn text-white px-5 fs-4 fw-bold rounded-5 bg-seg'>add to card</a>
+              </div>
+            </div>
+            </div> 
+        )}))
+    ))
+    }catch(error){
+     console.log(error)
+    }
+
+     }, [0])
+    
     return (<>
     <Navbar/>
      <div className='row m-0 py-5'>
@@ -47,106 +136,8 @@ import Footer from './Footer';
             <motion.div initial={{opacity:0}} whileInView={{opacity:1}} transition={{duration:2}} className='col text-end' style={{marginTop:"200px"}}><a className='btnn text-decoration-none p-1'>view all</a></motion.div>
         </div>
         <div className='row mt-5 ms-lg-5'>
-        <OwlCarousel className='owl-theme firstowl' items={4} dots nav loop margin={40}> 
-    <div className='item'>
-    <div className='card bg-transparent text-center text-white'>
-     <div className='overflow-hidden'>
-      <img src='https://static.wixstatic.com/media/c837a6_e9de4ca4cb7a4cbc9c9e0098bcf68fa4~mv2.jpg/v1/fill/w_362,h_362,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/c837a6_e9de4ca4cb7a4cbc9c9e0098bcf68fa4~mv2.jpg
-      ' className='card-img zoom w-100'/>
-      </div>
-      <div className='card-body'>
-        <div className='card-title fs-4 fw-bold'>
-        Wave Gen RX
-        </div>
-        <div className='card-text fs-5'>$100</div>
-        <a className='text-decoration-none btn text-white px-5 fs-4 fw-bold rounded-5 bg-seg'>add to card</a>
-      </div>
-    </div>
-    </div> 
-    <div className='item'>
-    <div className='card bg-transparent text-center text-white'>
-     <div className='overflow-hidden'>
-      <img src='https://static.wixstatic.com/media/c837a6_a082fb07d8344bec8bb61e3958c65401~mv2.jpg/v1/fill/w_362,h_362,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/c837a6_a082fb07d8344bec8bb61e3958c65401~mv2.jpg' className='card-img zoom w-100'/>
-      </div>
-      <div className='card-body'>
-        <div className='card-title fs-4 fw-bold'>
-        Wave Gen RX
-        </div>
-        <div className='card-text fs-5'>$100</div>
-        <a className='text-decoration-none btn text-white px-5 fs-4 fw-bold rounded-5 bg-seg'>add to card</a>
-      </div>
-    </div>
-    </div>
-     <div className='item'>
-     <div className='card bg-transparent text-center text-white'>
-     <div className='overflow-hidden'>
-      <img src='https://static.wixstatic.com/media/c837a6_0067919b3086427cad03a54e61452958~mv2.jpg/v1/fill/w_362,h_362,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/c837a6_0067919b3086427cad03a54e61452958~mv2.jpg' className='card-img zoom w-100'/>
-      </div>
-      <div className='card-body'>
-        <div className='card-title fs-4 fw-bold'>
-        Wave Gen RX
-        </div>
-        <div className='card-text fs-5'>$100</div>
-        <a className='text-decoration-none btn text-white px-5 fs-4 fw-bold rounded-5 bg-seg'>add to card</a>
-      </div>
-    </div>
-    </div> 
-    <div className='item'>
-     <div className='card bg-transparent text-center text-white'>
-     <div className='overflow-hidden'>
-      <img src='https://static.wixstatic.com/media/c837a6_261f4ef2535f451faedabc197c6e4a71~mv2.jpg/v1/fill/w_362,h_362,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/c837a6_261f4ef2535f451faedabc197c6e4a71~mv2.jpg' className='card-img zoom w-100'/>
-      </div>
-      <div className='card-body'>
-        <div className='card-title fs-4 fw-bold'>
-        Wave Gen RX
-        </div>
-        <div className='card-text fs-5'>$100</div>
-        <a className='text-decoration-none btn text-white px-5 fs-4 fw-bold rounded-5 bg-seg'>add to card</a>
-      </div>
-    </div>
-    </div> 
-    <div className='item'>
-     <div className='card bg-transparent text-center text-white'>
-     <div className='overflow-hidden'>
-      <img src='https://static.wixstatic.com/media/c837a6_0ad63666dfda498c87e59e0424307682~mv2.jpg/v1/fill/w_362,h_362,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/c837a6_0ad63666dfda498c87e59e0424307682~mv2.jpg' className='card-img zoom w-100'/>
-      </div>
-      <div className='card-body'>
-        <div className='card-title fs-4 fw-bold'>
-        Wave Gen RX
-        </div>
-        <div className='card-text fs-5'>$100</div>
-        <a className='text-decoration-none btn text-white px-5 fs-4 fw-bold rounded-5 bg-seg'>add to card</a>
-      </div>
-    </div>
-    </div> 
-    <div className='item'>
-     <div className='card bg-transparent text-center text-white'>
-     <div className='overflow-hidden'>
-      <img src='https://static.wixstatic.com/media/c837a6_a288e7752775424cb73f47c163e7421d~mv2.jpg/v1/fill/w_362,h_362,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/c837a6_a288e7752775424cb73f47c163e7421d~mv2.jpg' className='card-img zoom w-100'/>
-      </div>
-      <div className='card-body'>
-        <div className='card-title fs-4 fw-bold'>
-        Wave Gen RX
-        </div>
-        <div className='card-text fs-5'>$100</div>
-        <a className='text-decoration-none btn text-white px-5 fs-4 fw-bold rounded-5 bg-seg'>add to card</a>
-      </div>
-    </div>
-    </div> 
-    <div className='item'>
-     <div className='card bg-transparent text-center text-white'>
-     <div className='overflow-hidden'>
-      <img src='https://static.wixstatic.com/media/c837a6_9a2583f0a17e48efb075913d90da0dbf~mv2.jpg/v1/fill/w_362,h_362,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/c837a6_9a2583f0a17e48efb075913d90da0dbf~mv2.jpg' className='card-img zoom w-100'/>
-      </div>
-      <div className='card-body'>
-        <div className='card-title fs-4 fw-bold'>
-        Wave Gen RX
-        </div>
-        <div className='card-text fs-5'>$100</div>
-        <a className='text-decoration-none btn text-white px-5 fs-4 fw-bold rounded-5 bg-seg'>add to card</a>
-      </div>
-    </div>
-    </div> 
+        <OwlCarousel className='owl-theme firstowl' items={4} dots nav loop margin={40}>  
+       {dataa1}
          </OwlCarousel> 
         </div>
 
@@ -212,105 +203,7 @@ THIS WEEK'S DEALS
         </div>
         <div className='row mt-5 ms-lg-5'>
         <OwlCarousel className='owl-theme firstowl' items={4} dots nav loop margin={40}> 
-    <div className='item'>
-    <div className='card bg-transparent text-center text-white'>
-     <div className='overflow-hidden'>
-      <img src='https://static.wixstatic.com/media/c837a6_e9de4ca4cb7a4cbc9c9e0098bcf68fa4~mv2.jpg/v1/fill/w_362,h_362,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/c837a6_e9de4ca4cb7a4cbc9c9e0098bcf68fa4~mv2.jpg
-      ' className='card-img zoom w-100'/>
-      </div>
-      <div className='card-body'>
-        <div className='card-title fs-4 fw-bold'>
-        Wave Gen RX
-        </div>
-        <div className='card-text fs-5'>$100</div>
-        <a className='text-decoration-none btn text-white px-5 fs-4 fw-bold rounded-5 bg-seg'>add to card</a>
-      </div>
-    </div>
-    </div> 
-    <div className='item'>
-    <div className='card bg-transparent text-center text-white'>
-     <div className='overflow-hidden'>
-      <img src='https://static.wixstatic.com/media/c837a6_a082fb07d8344bec8bb61e3958c65401~mv2.jpg/v1/fill/w_362,h_362,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/c837a6_a082fb07d8344bec8bb61e3958c65401~mv2.jpg' className='card-img zoom w-100'/>
-      </div>
-      <div className='card-body'>
-        <div className='card-title fs-4 fw-bold'>
-        Wave Gen RX
-        </div>
-        <div className='card-text fs-5'>$100</div>
-        <a className='text-decoration-none btn text-white px-5 fs-4 fw-bold rounded-5 bg-seg'>add to card</a>
-      </div>
-    </div>
-    </div>
-     <div className='item'>
-     <div className='card bg-transparent text-center text-white'>
-     <div className='overflow-hidden'>
-      <img src='https://static.wixstatic.com/media/c837a6_0067919b3086427cad03a54e61452958~mv2.jpg/v1/fill/w_362,h_362,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/c837a6_0067919b3086427cad03a54e61452958~mv2.jpg' className='card-img zoom w-100'/>
-      </div>
-      <div className='card-body'>
-        <div className='card-title fs-4 fw-bold'>
-        Wave Gen RX
-        </div>
-        <div className='card-text fs-5'>$100</div>
-        <a className='text-decoration-none btn text-white px-5 fs-4 fw-bold rounded-5 bg-seg'>add to card</a>
-      </div>
-    </div>
-    </div> 
-    <div className='item'>
-     <div className='card bg-transparent text-center text-white'>
-     <div className='overflow-hidden'>
-      <img src='https://static.wixstatic.com/media/c837a6_261f4ef2535f451faedabc197c6e4a71~mv2.jpg/v1/fill/w_362,h_362,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/c837a6_261f4ef2535f451faedabc197c6e4a71~mv2.jpg' className='card-img zoom w-100'/>
-      </div>
-      <div className='card-body'>
-        <div className='card-title fs-4 fw-bold'>
-        Wave Gen RX
-        </div>
-        <div className='card-text fs-5'>$100</div>
-        <a className='text-decoration-none btn text-white px-5 fs-4 fw-bold rounded-5 bg-seg'>add to card</a>
-      </div>
-    </div>
-    </div> 
-    <div className='item'>
-     <div className='card bg-transparent text-center text-white'>
-     <div className='overflow-hidden'>
-      <img src='https://static.wixstatic.com/media/c837a6_0ad63666dfda498c87e59e0424307682~mv2.jpg/v1/fill/w_362,h_362,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/c837a6_0ad63666dfda498c87e59e0424307682~mv2.jpg' className='card-img zoom w-100'/>
-      </div>
-      <div className='card-body'>
-        <div className='card-title fs-4 fw-bold'>
-        Wave Gen RX
-        </div>
-        <div className='card-text fs-5'>$100</div>
-        <a className='text-decoration-none btn text-white px-5 fs-4 fw-bold rounded-5 bg-seg'>add to card</a>
-      </div>
-    </div>
-    </div> 
-    <div className='item'>
-     <div className='card bg-transparent text-center text-white'>
-     <div className='overflow-hidden'>
-      <img src='https://static.wixstatic.com/media/c837a6_a288e7752775424cb73f47c163e7421d~mv2.jpg/v1/fill/w_362,h_362,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/c837a6_a288e7752775424cb73f47c163e7421d~mv2.jpg' className='card-img zoom w-100'/>
-      </div>
-      <div className='card-body'>
-        <div className='card-title fs-4 fw-bold'>
-        Wave Gen RX
-        </div>
-        <div className='card-text fs-5'>$100</div>
-        <a className='text-decoration-none btn text-white px-5 fs-4 fw-bold rounded-5 bg-seg'>add to card</a>
-      </div>
-    </div>
-    </div> 
-    <div className='item'>
-     <div className='card bg-transparent text-center text-white'>
-     <div className='overflow-hidden'>
-      <img src='https://static.wixstatic.com/media/c837a6_9a2583f0a17e48efb075913d90da0dbf~mv2.jpg/v1/fill/w_362,h_362,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/c837a6_9a2583f0a17e48efb075913d90da0dbf~mv2.jpg' className='card-img zoom w-100'/>
-      </div>
-      <div className='card-body'>
-        <div className='card-title fs-4 fw-bold'>
-        Wave Gen RX
-        </div>
-        <div className='card-text fs-5'>$100</div>
-        <a className='text-decoration-none btn text-white px-5 fs-4 fw-bold rounded-5 bg-seg'>add to card</a>
-      </div>
-    </div>
-    </div> 
+         {dataa2}
          </OwlCarousel> 
         </div>
 
@@ -335,105 +228,7 @@ THIS WEEK'S DEALS
         </div>
         <div className='row mt-5 ms-lg-5'>
         <OwlCarousel className='owl-theme firstowl' items={4} dots nav loop margin={40}> 
-    <div className='item'>
-    <div className='card bg-transparent text-center text-white'>
-     <div className='overflow-hidden'>
-      <img src='https://static.wixstatic.com/media/c837a6_e9de4ca4cb7a4cbc9c9e0098bcf68fa4~mv2.jpg/v1/fill/w_362,h_362,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/c837a6_e9de4ca4cb7a4cbc9c9e0098bcf68fa4~mv2.jpg
-      ' className='card-img zoom w-100'/>
-      </div>
-      <div className='card-body'>
-        <div className='card-title fs-4 fw-bold'>
-        Wave Gen RX
-        </div>
-        <div className='card-text fs-5'>$100</div>
-        <a className='text-decoration-none btn text-white px-5 fs-4 fw-bold rounded-5 bg-seg'>add to card</a>
-      </div>
-    </div>
-    </div> 
-    <div className='item'>
-    <div className='card bg-transparent text-center text-white'>
-     <div className='overflow-hidden'>
-      <img src='https://static.wixstatic.com/media/c837a6_a082fb07d8344bec8bb61e3958c65401~mv2.jpg/v1/fill/w_362,h_362,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/c837a6_a082fb07d8344bec8bb61e3958c65401~mv2.jpg' className='card-img zoom w-100'/>
-      </div>
-      <div className='card-body'>
-        <div className='card-title fs-4 fw-bold'>
-        Wave Gen RX
-        </div>
-        <div className='card-text fs-5'>$100</div>
-        <a className='text-decoration-none btn text-white px-5 fs-4 fw-bold rounded-5 bg-seg'>add to card</a>
-      </div>
-    </div>
-    </div>
-     <div className='item'>
-     <div className='card bg-transparent text-center text-white'>
-     <div className='overflow-hidden'>
-      <img src='https://static.wixstatic.com/media/c837a6_0067919b3086427cad03a54e61452958~mv2.jpg/v1/fill/w_362,h_362,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/c837a6_0067919b3086427cad03a54e61452958~mv2.jpg' className='card-img zoom w-100'/>
-      </div>
-      <div className='card-body'>
-        <div className='card-title fs-4 fw-bold'>
-        Wave Gen RX
-        </div>
-        <div className='card-text fs-5'>$100</div>
-        <a className='text-decoration-none btn text-white px-5 fs-4 fw-bold rounded-5 bg-seg'>add to card</a>
-      </div>
-    </div>
-    </div> 
-    <div className='item'>
-     <div className='card bg-transparent text-center text-white'>
-     <div className='overflow-hidden'>
-      <img src='https://static.wixstatic.com/media/c837a6_261f4ef2535f451faedabc197c6e4a71~mv2.jpg/v1/fill/w_362,h_362,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/c837a6_261f4ef2535f451faedabc197c6e4a71~mv2.jpg' className='card-img zoom w-100'/>
-      </div>
-      <div className='card-body'>
-        <div className='card-title fs-4 fw-bold'>
-        Wave Gen RX
-        </div>
-        <div className='card-text fs-5'>$100</div>
-        <a className='text-decoration-none btn text-white px-5 fs-4 fw-bold rounded-5 bg-seg'>add to card</a>
-      </div>
-    </div>
-    </div> 
-    <div className='item'>
-     <div className='card bg-transparent text-center text-white'>
-     <div className='overflow-hidden'>
-      <img src='https://static.wixstatic.com/media/c837a6_0ad63666dfda498c87e59e0424307682~mv2.jpg/v1/fill/w_362,h_362,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/c837a6_0ad63666dfda498c87e59e0424307682~mv2.jpg' className='card-img zoom w-100'/>
-      </div>
-      <div className='card-body'>
-        <div className='card-title fs-4 fw-bold'>
-        Wave Gen RX
-        </div>
-        <div className='card-text fs-5'>$100</div>
-        <a className='text-decoration-none btn text-white px-5 fs-4 fw-bold rounded-5 bg-seg'>add to card</a>
-      </div>
-    </div>
-    </div> 
-    <div className='item'>
-     <div className='card bg-transparent text-center text-white'>
-     <div className='overflow-hidden'>
-      <img src='https://static.wixstatic.com/media/c837a6_a288e7752775424cb73f47c163e7421d~mv2.jpg/v1/fill/w_362,h_362,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/c837a6_a288e7752775424cb73f47c163e7421d~mv2.jpg' className='card-img zoom w-100'/>
-      </div>
-      <div className='card-body'>
-        <div className='card-title fs-4 fw-bold'>
-        Wave Gen RX
-        </div>
-        <div className='card-text fs-5'>$100</div>
-        <a className='text-decoration-none btn text-white px-5 fs-4 fw-bold rounded-5 bg-seg'>add to card</a>
-      </div>
-    </div>
-    </div> 
-    <div className='item'>
-     <div className='card bg-transparent text-center text-white'>
-     <div className='overflow-hidden'>
-      <img src='https://static.wixstatic.com/media/c837a6_9a2583f0a17e48efb075913d90da0dbf~mv2.jpg/v1/fill/w_362,h_362,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/c837a6_9a2583f0a17e48efb075913d90da0dbf~mv2.jpg' className='card-img zoom w-100'/>
-      </div>
-      <div className='card-body'>
-        <div className='card-title fs-4 fw-bold'>
-        Wave Gen RX
-        </div>
-        <div className='card-text fs-5'>$100</div>
-        <a className='text-decoration-none btn text-white px-5 fs-4 fw-bold rounded-5 bg-seg'>add to card</a>
-      </div>
-    </div>
-    </div> 
+           {dataa3}
          </OwlCarousel> 
         </div>
 

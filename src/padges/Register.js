@@ -12,6 +12,7 @@ export default function Register2(){
     let [password,setpassword] =useState("")
     let [passwordc,setpasswordc] =useState("") 
     let [img,setimg]=useState()
+    nav("/store")
     const p = useRef(null)
     function uploadimng(){
       p.current.click()
@@ -23,16 +24,17 @@ export default function Register2(){
     async function Form(e){  
       e.preventDefault()
       try {
-        var x= await Axios.postForm("register/",{
+        var x= await axios.post("http://127.0.0.1:8000/api/register/",
+        {
        username:user,
     email:email,
     first_name:firstuser,
     last_name:seconduser,
     password:password,
     password2:passwordc
-  })
+      })
 
-  console.log(x);
+      nav("/")
      }catch (error) {  console.log(error)}
 
      
@@ -51,30 +53,30 @@ export default function Register2(){
       </div>
       <div className="row">
       <div className="col">
-        <input required type="text" className="input rounded-2 w-100 text-center" placeholder="first_name" value={firstuser} onChange={(e)=>setfirstuser(e.target.value)}/>
+        <input  type="text" className="input rounded-2 w-100 text-center" placeholder="first_name" value={firstuser} onChange={(e)=>setfirstuser(e.target.value)}/>
       </div>
       <div className="col">
-        <input required type="text" className="input rounded-2 w-100 text-center" placeholder="second_name" value={seconduser} onChange={(e)=>setseconduser(e.target.value)}/>
+        <input  type="text" className="input rounded-2 w-100 text-center" placeholder="second_name" value={seconduser} onChange={(e)=>setseconduser(e.target.value)}/>
       </div>
       </div>
       <div className="row">
       <div className="col">
-        <input required type="text" className="input rounded-2 w-100 mt-4 text-center" placeholder="username" value={user} onChange={(e)=>setuser(e.target.value)}/>
+        <input  type="text" className="input rounded-2 w-100 mt-4 text-center" placeholder="username" value={user} onChange={(e)=>setuser(e.target.value)}/>
       </div>
       </div>
      <div className="row">
       <div className="col">
-        <input required type="email" className="input rounded-2 w-100 mt-4 text-center" placeholder="email" value={email} onChange={(e)=>setemail(e.target.value)}/>
+        <input  type="email" className="input rounded-2 w-100 mt-4 text-center" placeholder="email" value={email} onChange={(e)=>setemail(e.target.value)}/>
       </div>
       </div>
       <div className="row">
       <div className="col">
-        <input required type="text" className="input rounded-2 w-100 mt-4 text-center" placeholder="password" value={password} onChange={(e)=>setpassword(e.target.value)}/>
+        <input  type="text" className="input rounded-2 w-100 mt-4 text-center" placeholder="password" value={password} onChange={(e)=>setpassword(e.target.value)}/>
       </div>
       </div>
       <div className="row">
       <div className="col">
-        <input required type="text" className="input rounded-2 w-100 mt-4 text-center" placeholder="confirm_password" value={passwordc} onChange={(e)=>setpasswordc(e.target.value)}/>
+        <input  type="text" className="input rounded-2 w-100 mt-4 text-center" placeholder="confirm_password" value={passwordc} onChange={(e)=>setpasswordc(e.target.value)}/>
       </div>
       </div>
       <div className="row mt-5 justify-content-center px-3">  
