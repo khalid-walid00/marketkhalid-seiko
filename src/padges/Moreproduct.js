@@ -11,6 +11,10 @@ export default function More(){
 const [range,setrange]=useState(10000)
 const [dataa1,setdataa1]=useState("")
 let [search,setsearch]=useState("all")
+const [name,setname]=useState("")
+const [price,setprice]=useState("")
+const [image,setimage]=useState("")
+const [number,setnumber]=useState("")
 useEffect(()=>{$(".range").on("click",()=>{
   $(".bonus1").fadeIn(200)
   $(".bonus").fadeOut(200)
@@ -62,7 +66,12 @@ if(search=="all"){
           <div className='card-text fs-5'>$ {item.price}</div>
           }
         
-        <button className='text-decoration-none btn text-white px-5 fs-4 fw-bold rounded-5 bg-seg'
+        <button  Number="1"  price={item.price} name={item.title} image={item.image} onClick={(e) => {
+        setname(e.target.getAttribute("name"));
+        setprice(e.target.getAttribute("price"));
+        setimage(e.target.getAttribute("image"));
+        setnumber(e.target.getAttribute("Number"));
+      }} className='text-decoration-none btn text-white px-5 fs-4 fw-bold rounded-5 bg-seg'
         >add to card</button> 
              <div className='card-text fs-6'>remaining number: {item.count}</div>
         </div>
@@ -78,7 +87,24 @@ if(search=="all"){
   }
 
    }, [range,search]) 
+   var arr = localStorage.card ? JSON.parse(localStorage.card) : [];
+
+   let opj = {
+     name: name,
+     price: price,
+     image: image,
+     number: number,
+   };
+   const itemExists = arr.some(
+     (item) =>
+       item.name === opj.name && item.price === opj.price && item.image === opj.image && item.number === opj.number
+   );
    
+   if (!itemExists && opj.name !== "" && opj.price !== "" && opj.image !== "") {
+     arr.push(opj);
+     localStorage.setItem("card", JSON.stringify(arr));
+     console.log(JSON.parse(localStorage.getItem("card")));
+   }
 
 return(<>  <div className="bg-black">
        <Navbar/>

@@ -102,7 +102,7 @@ function toggle(){
       
 
       <div className="row my-2 justify-content-center px-3">  
-        <button type="submit" disabled={!status||!img||!description||!price|| !discount|| !count||!name} className="btn bg-purple btn-outline-primary px-5 py-2">add</button>
+        <button type="submit" disabled={!status||!img||!description||!price|| !discount|| !count||!name || price<=discount} className="btn bg-purple btn-outline-primary px-5 py-2">add</button>
       </div>
       </form>
   

@@ -20,7 +20,7 @@ export default function Particlsback() {
                 value: "transparent",
             },
         },
-        fpsLimit: 120,
+        fpsLimit: 100,
         interactivity: {
             events: {
                 onClick: {
@@ -69,7 +69,7 @@ export default function Particlsback() {
                     enable: true,
                     area: 800,
                 },
-                value: 100,
+                value: 80,
             },
             opacity: {
                 value: 0.5,
