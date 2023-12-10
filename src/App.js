@@ -35,6 +35,7 @@ export default function App() {
             <Route path="/search" element={<More />} />
             <Route path="/onsale" element={<Sale />} />
             <Route path="/card" element={<Card />} />
+            <Route path="dashbord/card" element={<Card />} />
           </Routes>
         </AnimatePresence>
      

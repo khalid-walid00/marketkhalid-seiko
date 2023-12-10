@@ -106,7 +106,7 @@ if(search=="all"){
        <Navbar/>
         
          <div className="container text-white" style={{height:"max-content",marginBottom:"200px"}}>
-           <div className=" fs-10 fw-bold" style={{height:"max-content"}}>BEST SELLERS</div>
+           <div className=" fs-10 fw-bold" style={{height:"max-content"}}>ON SALE</div>
            <div className="row my-5">
              <div className="col-3">
                 <div className="row fs-2">Filter by</div>
