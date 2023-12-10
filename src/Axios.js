@@ -3,8 +3,10 @@ import Cookie from "cookie-universal"
 import { mainapi } from "./Api";
 
 const cookie=Cookie()
-const token =cookie.get("play")
-const refresh =cookie.get("refresh")
+
+
+const token =cookie.get("play") || '';
+const refresh =cookie.get("refresh") || '';
 console.log(token)
 export const Axios =axios.create({
        headers:{   

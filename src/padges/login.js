@@ -15,23 +15,16 @@ export default function Login2(){
       data.append("username",username)
       data.append("password",password)
      try{
-     let x=await axios.post("http://127.0.0.1:8000/api/token/",data);
+     let x=await axios.post("http://127.0.0.1:8000/api/token/",data)
      let token=x.data.access
      let refresh=x.data.refresh
      console.log(token)
     cookie.set("play",token)
     cookie.set("refresh",refresh)
     nav("/")
-     }
-     catch(err){
-    
-     }
-
-
-  
-   
-
-}
+     }catch(error){
+      console.log(error)
+     }}
     return(<>
     <div className="row position-fixed bg-purple border-light border border-1 rounded-4 text-white" style={{width:"75%",height:"max-content"}}>
     

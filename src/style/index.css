@@ -6,12 +6,95 @@
   background-color: rgb(136, 88, 237) !important;
 }
 
+.bg-segliner {
+  background-image: linear-gradient(0deg, rgb(136, 88, 237), rgba(67, 7, 97, 0.686)) !important;
+}
+
 .bg-purple {
   background-image: linear-gradient(0deg, transparent, rgba(67, 7, 97, 0.686));
 }
 
 .bg-black {
   background-color: black !important;
+}
+
+.noinp {
+  outline: 0;
+  border: 0;
+  background-color: transparent;
+}
+
+.dropdown {
+  background-color: transparent;
+  color: white;
+  outline: 0;
+  border: 0;
+}
+
+.dropdownoption {
+  background-color: #050104;
+}
+
+#range {
+  -webkit-appearance: none;
+  width: 100%;
+}
+
+#range {
+  background-color: transparent;
+}
+
+#range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 10px;
+  height: 10px;
+  position: relative;
+  top: -5px;
+  background-color: rgb(136, 88, 237);
+  border-radius: 50%;
+}
+
+::-webkit-slider-runnable-track {
+  background-color: rgb(255, 255, 255);
+  height: 2px;
+  margin: 15px;
+}
+
+.filter button:hover {
+  color: rgb(108, 107, 107);
+}
+
+.card-number {
+  outline: 0;
+}
+
+.totalforone {
+  position: absolute;
+  top: 125px;
+  right: -55%;
+  width: -moz-max-content;
+  width: max-content;
+}
+
+.mforone {
+  margin-top: 147px;
+  color: rgb(136, 88, 237);
+  font-size: large;
+}
+
+.number {
+  position: relative;
+  top: -27px;
+  left: -21px;
+}
+
+.filter button {
+  color: rgb(187, 185, 185);
+  background-color: transparent;
+  border: 0;
+  width: 100%;
+  text-align: start;
+  font-size: medium;
 }
 
 .hover:hover {
@@ -42,6 +125,10 @@
 
 .border-seg {
   border: 2px groove rgb(136, 88, 237);
+}
+
+.hidden {
+  display: none;
 }
 
 .btnn {
@@ -383,15 +470,6 @@ thead tr td {
 
 tbody tr td {
   border: 2px solid rgb(224, 147, 228);
-}
-
-.select {
-  background-color: #cd9ce1 !important;
-  color: white !important;
-}
-
-option:hover {
-  background-color: rgba(255, 255, 255, 0.5725490196) !important;
 }
 
 .btn-rounded-top-left {

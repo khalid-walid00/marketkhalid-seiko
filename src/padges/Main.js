@@ -38,11 +38,12 @@ import { Axios } from '../Axios';
   Axios.get(`http://127.0.0.1:8000/api/products/`)
   .then((res)=>(setdataa1(res.data.results.filter((item) => { 
     return item.status =="games"
+    
     }).map((item,key) => { 
       return (
         <div key={key} className='item'>
         <div className='card bg-transparent text-center text-white' >
-          {item.is_sale &&<div className='position-absolute top-25 bg-danger z-3 rounded-end-4'>sale</div>}
+          {item.is_sale &&<div className='position-absolute bg-segliner top-25 bg-segliner z-3 rounded-end-4'>sale</div>}
          <div className='overflow-hidden' style={{height:"300px"}}>
           <img src={item.image} className='card-img zoom w-100 h-100'/>
           </div>
@@ -67,7 +68,7 @@ import { Axios } from '../Axios';
         return (
           <div key={key} className='item'>
           <div className='card bg-transparent text-center text-white' >
-            {item.is_sale &&<div className='position-absolute top-25 bg-danger z-3 rounded-end-4'>sale</div>}
+            {item.is_sale &&<div className='position-absolute top-25 bg-segliner z-3 rounded-end-4'>sale</div>}
            <div className='overflow-hidden' style={{height:"300px"}}>
             <img src={item.image} className='card-img zoom w-100 h-100'/>
             </div>
@@ -90,7 +91,7 @@ import { Axios } from '../Axios';
           return (
             <div key={key} className='item'>
             <div className='card bg-transparent text-center text-white' >
-              {item.is_sale &&<div className='position-absolute top-25 bg-danger z-3 rounded-end-4'>sale</div>}
+              {item.is_sale &&<div className='position-absolute top-25 bg-segliner z-3 rounded-end-4'>sale</div>}
              <div className='overflow-hidden' style={{height:"300px"}}>
               <img src={item.image} className='card-img zoom w-100 h-100'/>
               </div>
@@ -108,7 +109,7 @@ import { Axios } from '../Axios';
             </div>
             </div> 
         )}))
-    ))
+    )).catch((err)=>(err.response.status==401?window.location.pathname="/dashbord/login":console.log(err)))
     }catch(error){
      console.log(error)
     }

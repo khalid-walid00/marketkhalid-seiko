@@ -43,7 +43,7 @@ async function Form(e){
      }
 })
 
-console.log(x);
+   
  }catch (error) {  console.log(error)}
 
  

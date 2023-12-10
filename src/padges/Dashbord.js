@@ -26,7 +26,7 @@ export default function Dashbord(){
         <>
         <Navbar/>
        
-        <div className="w-100 bg-dark" style={{height:"600vh"}}>
+        <div className="w-100 bg-dark overflow-hidden" style={{height:"600vh"}}>
          <div className="pe-4 pt-4 pb-4 my-4 dashbord rounded-5">
             <div className="row">
                     <NavLink to="login" name="login" onClick={(e)=>setclick("login")} className="border-5  mt-2 btndash btn border-start-0 border-white border text-white px-5 rounded-end-4"><FontAwesomeIcon className="mx-2 active fs-3" icon={faRightToBracket} />Login</NavLink>
