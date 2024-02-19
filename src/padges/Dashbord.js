@@ -3,7 +3,7 @@ import Navbar from "./Navbar";
 import { faCameraRetro, faCartArrowDown, faFeather, faRightToBracket, faWarehouse } from "@fortawesome/free-solid-svg-icons";
 import { faRegistered, faUser } from "@fortawesome/free-regular-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import Particlsback from "../particls/Particls";
+import Particlsback from "../Particls/Particls";
 import { useEffect, useState } from "react";
 import { Axios } from "../Axios";
 export default function Dashbord(){

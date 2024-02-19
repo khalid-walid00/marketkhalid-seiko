@@ -12,7 +12,6 @@ export default function Register2(){
     let [password,setpassword] =useState("")
     let [passwordc,setpasswordc] =useState("") 
     let [img,setimg]=useState()
-    nav("/store")
     const p = useRef(null)
     function uploadimng(){
       p.current.click()

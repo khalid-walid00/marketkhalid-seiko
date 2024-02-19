@@ -45,7 +45,7 @@ export default function Particlsback() {
         },
         particles: {
             color: {
-                value: "#ffffff",
+value: "#ffffff",
             },
             links: {
                 color: "#340e2e",
