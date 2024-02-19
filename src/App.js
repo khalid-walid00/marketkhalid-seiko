@@ -26,6 +26,7 @@ export default function App() {
 <Route path="/conactus" element={<Conact />} />
             <Route path="/dashbord" element={<Dashbord />}>
             <Route path="login" element={<Login2 />} />
+            <Route path="/dashbord/login" element={<Login2 />} />
               <Route path="register" element={<Register2 />} />
               <Route path="users" element={<Users />} />
               <Route path="addproduct" element={<AddProduct />} />
