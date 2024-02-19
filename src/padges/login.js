@@ -31,7 +31,7 @@ export default function Login2(){
       <form onSubmit={Form}><div className="text-white fs-1 text-center my-5 fst-italic fw-bold">Login</div>
      <div className="row">
       <div className="col">
-        <input type="text" className="input rounded-2 w-100 text-center" placeholder="email" value={username} onChange={(e)=>setusername(e.target.value)}/>
+        <input type="text" className="input rounded-2 w-100 text-center" placeholder="Username" value={username} onChange={(e)=>setusername(e.target.value)}/>
       </div>
       </div>
       <div className="row">
